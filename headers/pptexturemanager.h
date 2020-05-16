@@ -1,7 +1,8 @@
-#ifndef PPTEXTUREMANAGER_H
-#define PPTEXTUREMANAGER_H
+#ifndef PPLATTEXTUREMANAGER_H
+#define PPLATTEXTUREMANAGER_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "headers/tools.h"
 
 namespace TextureManager {

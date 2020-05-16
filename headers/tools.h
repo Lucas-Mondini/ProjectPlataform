@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
+#include "headers/Game/Entity.h"
 
 namespace tools {
     bool testInitFunction(int flag);
@@ -26,8 +27,7 @@ public:
     void setRunning(bool newValue);
     SDL_Renderer* GetRenderer();
     SDL_Window* GetWindow();
-
-    SystemTools(int width, int height, bool isFullScreen);
+    SystemTools(int width, int height, float scale, bool isFullScreen);
     ~SystemTools();
 };
 

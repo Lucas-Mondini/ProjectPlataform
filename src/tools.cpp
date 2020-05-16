@@ -30,19 +30,19 @@ SDL_Window* SystemTools::GetWindow(){
 }
 
 
-SystemTools::SystemTools(int width, int height, bool isFullScreen){
+SystemTools::SystemTools(int width, int height, float scale, bool isFullScreen){
     this->running = true;
     this->pRunning = &this->running;
     if (isFullScreen)
         this->window = SDL_CreateWindow("Project Plataform",
                                         SDL_WINDOWPOS_CENTERED,
                                         SDL_WINDOWPOS_CENTERED,
-                                        width, height, SDL_WINDOW_FULLSCREEN_DESKTOP);
+                                        width*scale, height*scale, SDL_WINDOW_FULLSCREEN_DESKTOP);
     else
         this->window = SDL_CreateWindow("Project Plataform",
                                         SDL_WINDOWPOS_CENTERED,
                                         SDL_WINDOWPOS_CENTERED,
-                                        width, height, 0);
+                                        width*scale, height*scale, 0);
     if (this->window == NULL)
         tools::CallError(this->pRunning);
     else
@@ -58,3 +58,6 @@ SystemTools::~SystemTools(){
     SDL_DestroyRenderer(this->renderer);
     SDL_Quit();
 }
+
+
+

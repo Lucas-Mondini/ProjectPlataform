@@ -4,12 +4,14 @@
 #include <SDL2/SDL.h>
 
 class Map{
-    const static int TOTALMAP_height = 80, TOTALMAP_width = 60;
-    int map [TOTALMAP_height][TOTALMAP_width];
+    const static int TOTALMAP_width = 800, TOTALMAP_height = 600;
+    int map [TOTALMAP_width][TOTALMAP_height];
     SDL_Texture* texture;
 public:
     Map(int level, SDL_Renderer* renderer);
     void Build(SDL_Renderer* renderer);
+    void setMap(int x, int y, int value);
+    int* getMap();
     ~Map();
 };
 
