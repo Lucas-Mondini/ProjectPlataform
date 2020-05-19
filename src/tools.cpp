@@ -28,6 +28,9 @@ SDL_Renderer* SystemTools::GetRenderer(){
 SDL_Window* SystemTools::GetWindow(){
     return this->window;
 }
+SDL_Event* SystemTools::GetEvent(){
+    return &this->event;
+}
 
 
 SystemTools::SystemTools(int width, int height, float scale, bool isFullScreen){

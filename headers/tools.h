@@ -21,12 +21,14 @@ class SystemTools {
     bool *pRunning = nullptr;
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
+    SDL_Event event;
 
 public:
     bool GetRunning();
     void setRunning(bool newValue);
     SDL_Renderer* GetRenderer();
     SDL_Window* GetWindow();
+    SDL_Event* GetEvent();
     SystemTools(int width, int height, float scale, bool isFullScreen);
     ~SystemTools();
 };

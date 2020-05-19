@@ -1,9 +1,23 @@
 #include "headers/Game/Collider/Collider.h"
 
-bool Collider::checkRight(int** map, int x, int y, int height, int &vel) {
-    for (int i = 0; i < height ; i++){
-        if(map[x+vel][y+i] != 0 && vel > 0)
-            return true;
-    }
+bool Collider::checkRight(Map *map, Entity* entity) {
+    if ((entity->getEntityDimensions().x + entity->velocity.Velx > map->getWidth()))
+        return true;
+        for (int i = 0; i < entity->getEntityDimensions().h ; i++){
+            if (map->getpMap()[entity->getEntityDimensions().x + entity->getVelocity().Velx][entity->getEntityDimensions().y+i] > 0)
+                return true;
+            }
+
+    return false;
+}
+
+bool Collider::checkLeft(Map* map, Entity* entity) {
+    if ((entity->getEntityDimensions().x + entity->velocity.Velx < 0))
+        return true;
+        for (int i = 0; i < entity->getEntityDimensions().h ; i++){
+            if (map->getpMap()[entity->getEntityDimensions().x + entity->getVelocity().Velx][entity->getEntityDimensions().y+i] > 0)
+                return true;
+            }
+
     return false;
 }

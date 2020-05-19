@@ -12,8 +12,16 @@ struct Position {
 };
 
 struct Velocity {
-    int Velx;
-    int Vely;
+    int Velx = 0;
+    int Vely = 0;
+};
+
+struct MoveKeys {
+    bool up;
+    bool down;
+    bool left;
+    bool right;
+    bool z;
 };
 
 
@@ -42,15 +50,21 @@ class Entity
     State Entitystate;
     SDL_Texture* actualTexture;
     SDL_Texture *Textures[20];
+
+    void moveX();
+    void moveY();
 public:
     Velocity velocity;
+    MoveKeys movekeys;
+
     Entity(SDL_Renderer* renderer, int x, int y, bool playable);
     void Render(SDL_Renderer* renderer);
-
+    void move(int direction);
 
     void setPosition(Position newPosition);
     void setVelocity(Velocity newVelocity);
     void setDimension(SDL_Rect newDimension);
+
 
     SDL_Texture* GetTexture ();
     Position getPosition();

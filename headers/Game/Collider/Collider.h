@@ -5,7 +5,8 @@
 #include "headers/Game/Entity.h"
 
 namespace Collider {
-    bool checkRight(int** map, int x, int y, int height, int &vel);
+    bool checkRight(Map* map, Entity* entity);
+    bool checkLeft(Map* map, Entity* entity);
 }
 
 

@@ -24,8 +24,9 @@ int main()
 
     while (system.GetRunning()){
         SDL_RenderClear(system.GetRenderer());
+        SDL_PollEvent(system.GetEvent());
+        Controller::DataEntry(&map, &player);
 
-        Controller::DataEntry(map.)
         player.Render(system.GetRenderer());
 
         map.Build(system.GetRenderer());

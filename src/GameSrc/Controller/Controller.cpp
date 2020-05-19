@@ -1,27 +1,34 @@
 #include "headers/Game/Controller.h"
 #include "headers/Game/Collider/Collider.h"
+#include "headers/Game/map.h"
 
-bool Controller::moveX(Entity* entity, int **map){
-    if (!(Collider::checkRight(map, entity->getPosition().x+1, entity->getPosition().y, entity->getEntityDimensions().h, entity->velocity.Velx))){
-        entity->setPosition({entity->getPosition().x+entity->getVelocity().Velx, entity->getPosition().y});
-        return true;
-    }
-    return false;
-}
 
-void Controller::DataEntry(int **map, int Map_height, int Map_width, Entity entity){
+
+
+
+
+
+void Controller::DataEntry(Map* map, Entity* entity){
         const Uint8 *keystate = SDL_GetKeyboardState(NULL);
-        if  (keystate[SDL_SCANCODE_D] || keystate[SDL_SCANCODE_RIGHT]){
-            entity.velocity.Velx++;
-            if (!Controller::moveX(&entity, map)){
-                entity.velocity.Velx = 0;
+        if  ((keystate[SDL_SCANCODE_D] || keystate[SDL_SCANCODE_RIGHT])){
+            if (!Collider::checkRight(map, entity)){
+                    entity->velocity.Velx++;
+                if (entity->velocity.Velx > 2)
+                    entity->velocity.Velx = 2;
+                    entity->move(1);
             }
+
         }
 
-        if  (keystate[SDL_SCANCODE_A] || keystate[SDL_SCANCODE_LEFT]){
-            entity.velocity.Velx--;
-            if (!Controller::moveX(&entity, map)){
-                entity.velocity.Velx = 0;
-            }
+        if  ((keystate[SDL_SCANCODE_A] || keystate[SDL_SCANCODE_LEFT])){
+            if (!Collider::checkLeft(map, entity))
+                entity->velocity.Velx--;
+            if (entity->velocity.Velx < 2)
+                entity->velocity.Velx = -2;
+                entity->move(1);
         }
+
+        entity->velocity.Velx = 0;
+
+
 }

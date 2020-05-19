@@ -23,12 +23,29 @@ Entity::Entity(SDL_Renderer* renderer, int x, int y, bool playable)
     this->destiny = {this->position.x, this->position.y, 17, 16};
 }
 
+void Entity::move(int direction){
+    switch (direction) {
+    case 1:
+        moveX();
+    case 2:
+        moveY();
+    }
+}
+
+void Entity::moveX(){
+    this->destiny.x = this->velocity.Velx + this->destiny.x;
+}
+void Entity::moveY(){
+    this->destiny.y = this->velocity.Vely + this->destiny.y;
+}
+
+
 Position Entity::getPosition(){
     return this->position;
 }
 
 SDL_Rect Entity::getEntityDimensions(){
-    return this->source;
+    return this->destiny;
 }
 Velocity Entity::getVelocity (){
     return this->velocity;
@@ -46,6 +63,7 @@ void Entity::setDimension(SDL_Rect newDimension){
 void Entity::Render(SDL_Renderer* renderer){
     SDL_RenderCopy(renderer, this->actualTexture, &this->source, &this->destiny);
 }
+
 
 
 
