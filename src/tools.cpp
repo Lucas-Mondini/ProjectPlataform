@@ -1,4 +1,5 @@
 #include "headers/tools.h"
+#include "headers/pptexturemanager.h"
 
 void tools::GetError(){
     std::cout <<SDL_GetError() <<std::endl;
@@ -54,9 +55,19 @@ SystemTools::SystemTools(int width, int height, float scale, bool isFullScreen){
     if(this->renderer == NULL)
         tools::CallError(this->pRunning);
     SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
+    this->background = TextureManager::LoadImage("assets/Background.bmp", this->renderer);
+    this->fim = TextureManager::LoadImage("assets/fim.bmp", this->renderer);
+}
+
+void SystemTools::renderBackground(){
+    SDL_RenderCopy(this->renderer, this->background, NULL, NULL);
 }
 
 SystemTools::~SystemTools(){
+    SDL_RenderClear(this->renderer);
+    SDL_RenderCopy(this->renderer, this->fim, NULL, NULL);
+    SDL_RenderPresent(this->renderer);
+    SDL_Delay(3000);
     SDL_DestroyWindow(this->window);
     SDL_DestroyRenderer(this->renderer);
     SDL_Quit();

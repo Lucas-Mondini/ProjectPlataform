@@ -1,0 +1,6 @@
+#ifndef ENTITYSPAWNER_H
+#define ENTITYSPAWNER_H
+
+
+
+#endif // ENTITYSPAWNER_H

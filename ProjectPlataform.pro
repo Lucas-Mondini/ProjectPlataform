@@ -62,6 +62,7 @@ HEADERS += \
     headers/Game/Collider/Collider.h \
     headers/Game/Controller.h \
     headers/Game/Entity.h \
+    headers/Game/EntitySpawner.h \
     headers/Game/map.h \
     headers/pptexturemanager.h \
     headers/tools.h

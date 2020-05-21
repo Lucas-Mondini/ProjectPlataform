@@ -22,6 +22,8 @@ class SystemTools {
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
     SDL_Event event;
+    SDL_Texture* background;
+    SDL_Texture* fim;
 
 public:
     bool GetRunning();
@@ -29,6 +31,7 @@ public:
     SDL_Renderer* GetRenderer();
     SDL_Window* GetWindow();
     SDL_Event* GetEvent();
+    void renderBackground();
     SystemTools(int width, int height, float scale, bool isFullScreen);
     ~SystemTools();
 };
